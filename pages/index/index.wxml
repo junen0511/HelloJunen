@@ -1,13 +1,42 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<navigation-bar type="search" barHeight="{{statusBarHeight}}"></navigation-bar>
+<view class="page-container" style="top:{{statusBarHeight+40}}px">
+    <view class="tabbar" style="padding:0 {{tabPadding}}px;">
+        <view wx:for="{{tabs}}" wx:key="{{index}}" data-index="{{index}}" class="tabbar__item {{activeIndex==index?'tabbar__item_on':''}}" bindtap="tabTap">
+            <view class="tabbar__label">{{item}}</view>
+        </view>
+        <view class="tabbar-slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <swiper class="hot-container" current="{{activeIndex}}" bindchange="onSwiperChange">
+        <swiper-item>
+            <scroll-view class="hot-scroll__view" scroll-y="{{true}}">
+                <navigator url="#" hover-class="none" class="hot-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
+                    <view class="hot-box__hd">
+                        <view class="heat-box">
+                            <text class="heat-box__order">0{{index+1}}</text>
+                            <text class="heat-box__num">{{item.heatNum}} 万热度</text>
+                        </view>
+                        <view class="hot-box-hd__title">{{item.title}}</view>
+                    </view>
+                    <view class="hot-box__bd">
+                        <view class="hot-box-bd__thumb">
+                            <image src="{{item.thumbImg}}" />
+                        </view>
+                    </view>
+                </navigator>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item>
+            <scroll-view class="custom-scroll__view" scroll-y="{{true}}">
+                <navigator url="#" hover-class="none" class="custom-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
+                    <view class="custom-box__title">{{item.title}}</view>
+                    <view class="custom-box__bd">
+                        <view class="custom-box__desc">{{item.title}}</view>
+                        <view class="custom-box__thumb">
+                            <image src="{{item.thumbImg}}"></image>
+                        </view>
+                    </view>
+                </navigator>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
 </view>

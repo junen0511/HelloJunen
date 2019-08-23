@@ -1,0 +1,36 @@
+<navigation-bar barHeight="{{statusBarHeight}}" title="知乎热榜"></navigation-bar>
+<view class="page-container" style="top:{{statusBarHeight+40}}px">
+    <view class="search-content">
+        <view class="search-box">
+            <image class="search-icon" bindtap="tapBack" src="../../images/search.svg"></image>
+            <input class="search-text" focus="{{true}}" type="text" value="{{searchKeyword}}" placeholder="鸿蒙系统不会应用在手机上" />
+        </view>
+        <navigator url="/pages/index/index" hover-class="none" class="search-back">取消</navigator>
+    </view>
+    <view class="search-tag">
+        <view class="tag-title">
+            <text>知乎热搜</text>
+        </view>
+        <view class="tag-container">
+            <view class="tag-item" wx:for="{{hotMap}}" data-keyword="{{item.title}}" wx:key="{{index}}" bindtap="onTapHotKeyword">
+                <text>{{item.title}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="search-history" wx:if="{{historyMap.length>0}}">
+        <view class="history-title">
+            <text>搜索历史</text>
+        </view>
+        <view class="history-container">
+            <view class="history-item" wx:for="{{historyMap}}" wx:key="{{index}}">
+                <view class="history-item__text">
+                    <text>{{item.title}}</text>
+                </view>
+                <view class="closed" data-id="{{item.id}}" bindtap="onTapDelete"></view>
+            </view>
+        </view>
+        <view class="clean-history" bindtap="onTapDeleteAll">
+            <text>清空搜索历史</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,33 @@
+.tabbar {
+  background: #fff;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  .tabbar__item {
+    line-height: 80rpx;
+    font-size: 28rpx;
+    position: relative;
+    flex: 1;
+    .tabbar__label {
+      text-align: center;
+    }
+    &.tabbar__item_on .tabbar__label {
+      color: #0084fe;
+      font-weight: bold;
+    }
+  }
+  .tabbar-slider {
+    transition: transform 0.3s;
+    display: inline-block;
+    height: 6rpx;
+    width: 72rpx;
+    background: linear-gradient(to right, #60b6fe, #0385ff);
+    border-radius: 6rpx;
+    position: absolute;
+    bottom: 10rpx;
+    z-index: 10;
+  }
+}
