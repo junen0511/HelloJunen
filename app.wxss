@@ -1,11 +1,3 @@
-@import "style/base.wxss";
-
 page {
   background: #f9f9f8;
-}
-.page-container {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }

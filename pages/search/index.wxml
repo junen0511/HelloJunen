@@ -1,5 +1,4 @@
-<navigation-bar barHeight="{{statusBarHeight}}" title="知乎热榜"></navigation-bar>
-<view class="page-container" style="top:{{statusBarHeight+40}}px">
+<navigation-bar barHeight="{{statusBarHeight}}" title="知乎热榜">
     <view class="search-content">
         <view class="search-box">
             <image class="search-icon" bindtap="tapBack" src="../../images/search.svg"></image>
@@ -7,6 +6,9 @@
         </view>
         <navigator url="/pages/index/index" hover-class="none" class="search-back">取消</navigator>
     </view>
+</navigation-bar>
+
+<view class="page-container" style="padding-top:{{statusBarHeight+88}}px">
     <view class="search-tag">
         <view class="tag-title">
             <text>知乎热搜</text>

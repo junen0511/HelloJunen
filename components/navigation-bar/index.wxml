@@ -1,12 +1,16 @@
-<view class="navigation-bar" style="top:{{topBarHeight}}px;">
+<view class="navigation-bar" style="padding-top:{{topBarHeight}}px;">
     <view wx:if="{{barType==='default'}}" class="navigation-container">
         <view class="navigation-control">
             <image class="back" bindtap="tapBack" src="../../images/back.svg"></image>
             <view class="line"></view>
             <image class="home" bindtap="tapHome" src="../../images/home.svg"></image>
         </view>
-        <view class="navigation-title">
-            {{barTitle}}
+        <view wx:if="{{barTitle}}" class="navigation-title">{{barTitle}}</view>
+        <view wx:else class="navigation-slot">
+            <view class="search-keywords search-keywords__min" bindtap="tapSearch">
+                <image class="search-icon" bindtap="tapBack" src="../../images/search.svg"></image>
+                <text class="search-text">{{searchValue}}</text>
+            </view>
         </view>
     </view>
     <view wx:if="{{barType==='search'}}" class="navigation-container" bindtap="tapSearch">
@@ -15,4 +19,5 @@
             <text class="search-text">{{searchValue}}</text>
         </view>
     </view>
-</view> 
+    <slot></slot>
+</view>

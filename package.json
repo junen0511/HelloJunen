@@ -4,5 +4,11 @@
   "scripts": {},
   "dependencies": {
     "numeral": "^2.0.6"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2"
   }
 }

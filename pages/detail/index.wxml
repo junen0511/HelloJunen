@@ -1,0 +1,18 @@
+<navigation-bar barHeight="{{statusBarHeight}}"></navigation-bar>
+<view class="page-container" style="padding-top:{{statusBarHeight+40}}px">
+    <view class="topic-container">
+        <view class="topic-title">
+            <text>为什么现在很多男生宁愿打游戏，也不愿去追女生？</text>
+        </view>
+        <view class="topic-desc">
+            <label>相关问题：</label>
+            <text>为什么现在很多年轻人宁愿打游戏也不愿谈恋爱？</text>
+        </view>
+        <view class="topic-more">
+            <view class="topic-more__btn">
+                <text>展开问题描述</text>
+                <image src="../../images/down.svg"></image>
+            </view>
+        </view>
+    </view>
+</view>

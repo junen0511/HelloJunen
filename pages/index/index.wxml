@@ -1,15 +1,16 @@
-<navigation-bar type="search" barHeight="{{statusBarHeight}}"></navigation-bar>
-<view class="page-container" style="top:{{statusBarHeight+40}}px">
+<navigation-bar type="search" barHeight="{{statusBarHeight}}">
     <view class="tabbar" style="padding:0 {{tabPadding}}px;">
         <view wx:for="{{tabs}}" wx:key="{{index}}" data-index="{{index}}" class="tabbar__item {{activeIndex==index?'tabbar__item_on':''}}" bindtap="tabTap">
             <view class="tabbar__label">{{item}}</view>
         </view>
         <view class="tabbar-slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
+</navigation-bar>
+<view class="page-container" style="padding-top:{{statusBarHeight+40}}px">
     <swiper class="hot-container" current="{{activeIndex}}" bindchange="onSwiperChange">
         <swiper-item>
             <scroll-view class="hot-scroll__view" scroll-y="{{true}}">
-                <navigator url="#" hover-class="none" class="hot-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
+                <navigator url="/pages/detail/index" hover-class="none" class="hot-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
                     <view class="hot-box__hd">
                         <view class="heat-box">
                             <text class="heat-box__order">0{{index+1}}</text>
@@ -27,7 +28,7 @@
         </swiper-item>
         <swiper-item>
             <scroll-view class="custom-scroll__view" scroll-y="{{true}}">
-                <navigator url="#" hover-class="none" class="custom-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
+                <navigator url="/pages/detail/index" hover-class="none" class="custom-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
                     <view class="custom-box__title">{{item.title}}</view>
                     <view class="custom-box__bd">
                         <view class="custom-box__desc">{{item.title}}</view>

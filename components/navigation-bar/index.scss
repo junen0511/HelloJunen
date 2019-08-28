@@ -1,0 +1,75 @@
+.navigation-bar {
+  background: #fff;
+  min-height: 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  .navigation-container {
+    padding: 12rpx 30rpx;
+    display: flex;
+  }
+  .search-keywords {
+    padding: 0 20rpx;
+    width: 460rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    border-radius: 28rpx;
+    background: #f3f4f6;
+    font-size: 24rpx;
+    text-align: center;
+    color: #8590a6;
+    image {
+      width: 26rpx;
+      height: 24rpx;
+      margin-right: 20rpx;
+      vertical-align: -3rpx;
+    }
+  }
+
+  .search-keywords__min {
+    width: 300rpx;
+  }
+
+  .navigation-control {
+    padding: 12rpx 26rpx 16rpx;
+    height: 32rpx;
+    border: 1rpx solid #e5e5e5;
+    border-radius: 30rpx;
+    vertical-align: middle;
+  }
+
+  .navigation-title,
+  .navigation-slot {
+    display: flex;
+    flex: 1;
+    padding-right: 154rpx;
+    min-height: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigation-title {
+    line-height: 32px;
+    text-align: center;
+    font-size: 32rpx;
+    font-weight: bold;
+  }
+
+  .navigation-control .line {
+    display: inline-block;
+    margin: 0 20rpx;
+    width: 1px;
+    height: 30rpx;
+    background: #d2d2d2;
+  }
+
+  .navigation-control .back {
+    width: 28rpx;
+    height: 28rpx;
+  }
+  .navigation-control .home {
+    width: 30rpx;
+    height: 30rpx;
+  }
+}
