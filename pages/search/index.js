@@ -18,6 +18,9 @@ Page({
     ]
   },
   onLoad() {},
+  tapBack() {
+    wx.navigateBack({ delta: 1 });
+  },
   onTapHotKeyword(e) {
     const { keyword } = e.currentTarget.dataset;
     this.setData({

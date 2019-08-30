@@ -20,7 +20,7 @@
                     </view>
                     <view class="hot-box__bd">
                         <view class="hot-box-bd__thumb">
-                            <image src="{{item.thumbImg}}" />
+                            <image mode="aspectFill" src="{{item.thumbImg}}" />
                         </view>
                     </view>
                 </navigator>
@@ -33,7 +33,7 @@
                     <view class="custom-box__bd">
                         <view class="custom-box__desc">{{item.title}}</view>
                         <view class="custom-box__thumb">
-                            <image src="{{item.thumbImg}}"></image>
+                            <image mode="aspectFill" src="{{item.thumbImg}}"></image>
                         </view>
                     </view>
                 </navigator>

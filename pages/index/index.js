@@ -39,11 +39,12 @@ Page({
   tabTap(e) {
     const activeIndex = e.currentTarget.dataset.index;
     const sliderOffset = e.currentTarget.offsetLeft;
-
-    this.setData({
-      activeIndex,
-      sliderOffset
-    });
+    if (this.data.activeIndex !== activeIndex) {
+      this.setData({
+        activeIndex,
+        sliderOffset
+      });
+    }
   },
   onSwiperChange(e) {
     const windowWidth = this.data.windowWidth;

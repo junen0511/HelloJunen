@@ -4,14 +4,45 @@
         <view class="topic-title">
             <text>为什么现在很多男生宁愿打游戏，也不愿去追女生？</text>
         </view>
-        <view class="topic-desc">
+        <view class="topic-desc" style="max-height: {{topicDescUnfold?'84rpx':'auto'}};">
             <label>相关问题：</label>
             <text>为什么现在很多年轻人宁愿打游戏也不愿谈恋爱？</text>
         </view>
-        <view class="topic-more">
-            <view class="topic-more__btn">
+        <view class="topic-more" wx:if="{{!topicDescUnfold}}">
+            <view class="topic-more__btn" ontap="tapUnfold">
                 <text>展开问题描述</text>
-                <image src="../../images/down.svg"></image>
+                <image mode="aspectFill" src="../../images/down.svg"></image>
+            </view>
+        </view>
+    </view>
+    <view class="response-container">
+        <view class="response-top">
+            <text class="response-num">9233 个回答</text>
+            <view class="response-rank" ontap="tapRankSwitch">
+                <image mode="aspectFill" src="../../images/switch.svg"></image>
+                <text>切换至{{rankIsNewest?"最新":"最热"}}</text>
+            </view>
+        </view>
+        <view class="response-card" wx:for="{{responseMap}}" wx:key="{{index}}">
+            <view class="response-card__user">
+                <image class="user-avatar" mode="aspectFill" src="https://avatars1.githubusercontent.com/u/12269185?s=460&v=4"></image>
+                <view class="user-info">
+                    <view class="user-name">Junen</view>
+                    <text class="update-time">30 天前</text>
+                </view>
+            </view>
+            <view class="response-card__content">
+                女生是谁？谁是女生？有些人搞错了事物的因果关系。你过生日，你爸给了你100万作为礼物。在这件事里，是因为那个人给了你100万，所以他是你爸？还是因为他是你爸，所以给了你100万？秦始皇一统六国。是因为他叫秦始皇，所以他可以统一六国？还是因为他统一了六国，所以他是秦始皇？一个和你无关的普通人出了事，你会竭力相助吗？你就职的公司出现了财务危机，你会无私的拿出自己的积蓄来堵漏洞吗？你可能会问：“凭什么？”此刻我也想问：“凭什么男生必须要为跟自己无关的普通女孩不计回报的付出？”这个回答可能会引起部分人的不适，在此我向你们道歉，对不起！这就是我的恋爱观：“你是我女朋友之前，我愿意付出一小部分时间和精力，你是我女朋友之后，我就会把大部分的时间精力放在你身上。”不是他付出的不够，所以你跟他没关系。而是因为你跟他没关系，所以他付出的不够。我知道，这个观点过于偏执了，但我就是不删，怎么滴吧！
+            </view>
+            <view class="response-card__handle">
+                <view class="handle-item">
+                    <image mode="aspectFill" src="../../images/unfold.svg"></image>
+                    <text>20K 赞同</text>
+                </view>
+                <view class="handle-item">
+                    <image mode="aspectFill" src="../../images/message.svg"></image>
+                    <text>2.1K 评论</text>
+                </view>
             </view>
         </view>
     </view>
