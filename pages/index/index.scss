@@ -28,17 +28,24 @@
 }
 
 .hot-container {
-  height: 100vh;
+  height: 100%;
   padding-top: 82rpx;
   box-sizing: border-box;
   .hot-scroll__view,
   .custom-scroll__view {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     box-sizing: border-box;
   }
   .hot-scroll__view {
     background: #fff;
+  }
+  .hot-loading {
+    height: 68rpx;
+    line-height: 68rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999;
   }
   .hot-box {
     display: flex;
@@ -113,6 +120,8 @@
       color: #444;
       line-height: 40rpx;
       margin-right: 42rpx;
+      max-height: 120rpx;
+      overflow: hidden;
     }
     .custom-box__thumb {
       width: 190rpx;

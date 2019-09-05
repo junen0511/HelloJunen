@@ -6,34 +6,38 @@
         <view class="tabbar-slider" style="left:{{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
 </navigation-bar>
-<view class="page-container" style="padding-top:{{statusBarHeight+40}}px">
+<view class="page-container" style="padding:{{statusBarHeight+40}}px 0 0;">
     <swiper class="hot-container" current="{{activeIndex}}" bindchange="onSwiperChange">
         <swiper-item>
-            <scroll-view class="hot-scroll__view" scroll-y="{{true}}">
+            <scroll-view class="hot-scroll__view" bindscrolltolower="onScrollEnd" scroll-y="{{true}}">
                 <navigator url="/pages/detail/index" hover-class="none" class="hot-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
                     <view class="hot-box__hd">
                         <view class="heat-box">
                             <text class="heat-box__order">0{{index+1}}</text>
-                            <text class="heat-box__num">{{item.heatNum}} 万热度</text>
+                            <text class="heat-box__num">{{item.hotMetrics}}</text>
                         </view>
-                        <view class="hot-box-hd__title">{{item.title}}</view>
+                        <view class="hot-box-hd__title">{{item.hotTitle}}</view>
                     </view>
                     <view class="hot-box__bd">
                         <view class="hot-box-bd__thumb">
-                            <image mode="aspectFill" src="{{item.thumbImg}}" />
+                            <image mode="aspectFill" src="{{item.hotImg}}" />
                         </view>
                     </view>
                 </navigator>
+                <view wx:if="{{isLoading}}" class="hot-loading">
+                    <text wx:if="{{isEnding}}">已经到底了...</text>
+                    <text wx:else>加载中...</text>
+                </view>
             </scroll-view>
         </swiper-item>
         <swiper-item>
             <scroll-view class="custom-scroll__view" scroll-y="{{true}}">
                 <navigator url="/pages/detail/index" hover-class="none" class="custom-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
-                    <view class="custom-box__title">{{item.title}}</view>
+                    <view class="custom-box__title">{{item.hotTitle}}</view>
                     <view class="custom-box__bd">
-                        <view class="custom-box__desc">{{item.title}}</view>
+                        <view class="custom-box__desc">{{item.hotExcerpt}}</view>
                         <view class="custom-box__thumb">
-                            <image mode="aspectFill" src="{{item.thumbImg}}"></image>
+                            <image mode="aspectFill" src="{{item.hotImg}}"></image>
                         </view>
                     </view>
                 </navigator>

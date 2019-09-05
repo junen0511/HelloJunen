@@ -1,5 +1,3 @@
-const Numeral = require("numeral");
-import hotMaps from "../../data/hotMaps";
 const app = getApp();
 
 Page({
@@ -11,6 +9,12 @@ Page({
     tabPadding: 85,
     sliderOffset: 0,
     sliderLeft: 0,
+    isLoading: true,
+    isEnding: false,
+    listQuery: {
+      current: 1,
+      pageSize: 10
+    },
     hotMaps: []
   },
   onLoad() {
@@ -27,14 +31,8 @@ Page({
       sliderOffset: (windowWidth / tabsLength) * this.data.activeIndex
     });
 
-    this.setData({
-      hotMaps: hotMaps.map(item => ({
-        ...item,
-        heatNum: Numeral(item.heatNum)
-          .divide(10000)
-          .value()
-      }))
-    });
+    const { listQuery } = this.data;
+    this.getHotList(listQuery);
   },
   tabTap(e) {
     const activeIndex = e.currentTarget.dataset.index;
@@ -51,11 +49,46 @@ Page({
     const tabsLength = this.data.tabs.length;
     const tabPadding = this.data.tabPadding;
     const activeIndex = e.detail.current;
-    const sliderOffset = activeIndex > 0 ? windowWidth / tabsLength - tabPadding : 0;
+    const sliderOffset =
+      activeIndex > 0 ? windowWidth / tabsLength - tabPadding : 0;
 
     this.setData({
       activeIndex,
       sliderOffset
+    });
+  },
+  onScrollEnd() {
+    let { current, pageSize } = this.data.listQuery;
+    current++;
+    this.getHotList({ current, pageSize });
+  },
+  getHotList(queryForm) {
+    const that = this;
+    const { hotMaps } = this.data;
+    wx.request({
+      url: "http://mp.annajunen.top/api/hot/list",
+      method: "POST", //仅为示例，并非真实的接口地址
+      data: queryForm,
+      success(res) {
+        const { current, list, pageSize } = res.data.data;
+        const isEnding = list.length === 0;
+        that.setData(
+          {
+            isLoading: false,
+            isEnding,
+            hotMaps: [...hotMaps, ...list],
+            listQuery: {
+              current,
+              pageSize
+            }
+          },
+          () => {
+            that.setData({
+              isLoading: true
+            });
+          }
+        );
+      }
     });
   }
 });

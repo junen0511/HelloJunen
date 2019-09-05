@@ -12,7 +12,7 @@ function getBuildDirs(parentDir) {
 function buildSass(dir) {
   return src(`${dir}/*.scss`)
     .pipe(sass().on("error", sass.logError))
-    .pipe(cleanCSS())
+    // .pipe(cleanCSS())
     .pipe(
       rename({
         extname: ".wxss"
