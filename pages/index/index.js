@@ -1,4 +1,5 @@
 const app = getApp();
+const { fetchHotList } = require("./service");
 
 Page({
   data: {
@@ -9,7 +10,6 @@ Page({
     tabPadding: 85,
     sliderOffset: 0,
     sliderLeft: 0,
-    isLoading: true,
     isEnding: false,
     listQuery: {
       current: 1,
@@ -62,33 +62,23 @@ Page({
     current++;
     this.getHotList({ current, pageSize });
   },
-  getHotList(queryForm) {
-    const that = this;
+  async getHotList(listQuery) {
     const { hotMaps } = this.data;
-    wx.request({
-      url: "http://mp.annajunen.top/api/hot/list",
-      method: "POST", //仅为示例，并非真实的接口地址
-      data: queryForm,
-      success(res) {
-        const { current, list, pageSize } = res.data.data;
-        const isEnding = list.length === 0;
-        that.setData(
-          {
-            isLoading: false,
-            isEnding,
-            hotMaps: [...hotMaps, ...list],
-            listQuery: {
-              current,
-              pageSize
-            }
-          },
-          () => {
-            that.setData({
-              isLoading: true
-            });
-          }
-        );
+    const response = await fetchHotList(listQuery);
+    const { list, current, pageSize } = response.data;
+    this.setData(
+      {
+        hotMaps: [...hotMaps, ...list],
+        listQuery: {
+          current,
+          pageSize
+        }
+      },
+      function() {
+        this.setData({
+          isEnding: list.length === 0
+        });
       }
-    });
+    );
   }
 });

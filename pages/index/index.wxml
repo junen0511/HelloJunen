@@ -24,7 +24,7 @@
                         </view>
                     </view>
                 </navigator>
-                <view wx:if="{{isLoading}}" class="hot-loading">
+                <view class="hot-loading">
                     <text wx:if="{{isEnding}}">已经到底了...</text>
                     <text wx:else>加载中...</text>
                 </view>
