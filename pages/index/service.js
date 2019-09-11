@@ -1,9 +1,9 @@
-const request = require("../../utils/request");
+import request from "../../utils/request";
 
-exports.fetchHotList = function(data) {
+export function fetchHotList(data) {
   return request({
     url: "/api/hot/list",
     method: "POST",
     data
   });
-};
+}

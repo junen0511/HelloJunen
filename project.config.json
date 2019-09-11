@@ -6,7 +6,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
-		"enhance": false,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -24,7 +24,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
+	"libVersion": "2.8.2",
 	"appid": "wxf3eaefede20811e2",
 	"projectname": "minapp",
 	"debugOptions": {

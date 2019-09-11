@@ -2,11 +2,11 @@
 <view class="page-container" style="padding-top:{{statusBarHeight+40}}px">
     <view class="topic-container">
         <view class="topic-title">
-            <text>为什么现在很多男生宁愿打游戏，也不愿去追女生？</text>
+            <text>{{hotInfo.hotTitle}}</text>
         </view>
         <view class="topic-desc" style="max-height: {{topicDescUnfold?'84rpx':'auto'}};">
             <label>相关问题：</label>
-            <text>为什么现在很多年轻人宁愿打游戏也不愿谈恋爱？</text>
+            <text>{{hotInfo.hotExcerpt}}</text>
         </view>
         <view class="topic-more" wx:if="{{!topicDescUnfold}}">
             <view class="topic-more__btn" ontap="tapUnfold">

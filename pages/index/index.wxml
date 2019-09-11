@@ -10,7 +10,7 @@
     <swiper class="hot-container" current="{{activeIndex}}" bindchange="onSwiperChange">
         <swiper-item>
             <scroll-view class="hot-scroll__view" bindscrolltolower="onScrollEnd" scroll-y="{{true}}">
-                <navigator url="/pages/detail/index" hover-class="none" class="hot-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
+                <navigator url="/pages/detail/index?hotId={{item.hotId}}" hover-class="none" class="hot-box" wx:for="{{hotMaps}}" wx:key="{{item.id}}">
                     <view class="hot-box__hd">
                         <view class="heat-box">
                             <text class="heat-box__order">0{{index+1}}</text>

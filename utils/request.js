@@ -1,9 +1,9 @@
-const { API_HOST } = require("../config");
+import config from "../config";
 
 function request({ url, method, data }) {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: API_HOST + url,
+      url: config.API_HOST + url,
       method,
       data,
       success({ data }) {
@@ -23,4 +23,4 @@ function request({ url, method, data }) {
   });
 }
 
-module.exports = request;
+export default request;

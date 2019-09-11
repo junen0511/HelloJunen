@@ -1,5 +1,5 @@
 const app = getApp();
-const { fetchHotList } = require("./service");
+import { fetchHotList } from "./service";
 
 Page({
   data: {

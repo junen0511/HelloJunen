@@ -1,15 +1,27 @@
+import { Login, isLogin } from "./global/user";
+
 //app.js
 App({
   onLaunch: function() {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync("logs") || [];
-    logs.unshift(Date.now());
-    wx.setStorageSync("logs", logs);
-
+    console.log(123, isLogin());
     // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    // wx.login({
+    //   success: async res => {
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     const { code } = res;
+    //     const data = await Login({ code });
+    //     console.log(123, data);
+    //   }
+    // });
+
+    wx.checkSession({
+      success() {
+        //session_key 未过期，并且在本生命周期一直有效
+        console.log("success");
+      },
+      fail() {
+        // session_key 已经失效，需要重新执行登录流程
+        console.log("error");
       }
     });
 
