@@ -9,7 +9,7 @@ function request({ url, method, data }) {
       success({ data }) {
         if (data && !data.status) {
           wx.showToast({
-            title: `${data.data.message}`,
+            title: `${data.message}`,
             icon: "none",
             duration: 2000
           });

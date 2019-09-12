@@ -77,6 +77,14 @@
     .hot-container .hot-box:nth-child(1) .heat-box .heat-box__order, .hot-container .hot-box:nth-child(2) .heat-box .heat-box__order, .hot-container .hot-box:nth-child(3) .heat-box .heat-box__order {
       background: linear-gradient(to right, #feaf13, #ffce25);
       color: #fff; }
+  .hot-container .authorize-card {
+    padding: 40rpx;
+    text-align: center; }
+    .hot-container .authorize-card text {
+      display: block;
+      line-height: 90rpx;
+      font-size: 28rpx;
+      font-weight: bold; }
   .hot-container .custom-box {
     width: auto;
     margin: 24rpx;

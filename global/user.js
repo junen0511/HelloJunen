@@ -10,3 +10,11 @@ export async function Login(formData) {
 export function isLogin() {
   return wx.getStorageSync(config.USER_SESSION_KEY) !== "";
 }
+
+export function saveIsUserInfo(status) {
+  wx.setStorageSync(config.IS_USER_INFO, status);
+}
+
+export function getIsUserInfo() {
+  return wx.getStorageSync(config.IS_USER_INFO);
+}

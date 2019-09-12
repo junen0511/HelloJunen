@@ -1,8 +1,10 @@
 const app = getApp();
+import { getIsUserInfo, saveIsUserInfo } from "../../global/user";
 import { fetchHotList } from "./service";
 
 Page({
   data: {
+    isUserInfo: null,
     tabs: ["热榜", "为你推荐"],
     activeIndex: 0,
     windowWidth: 0,
@@ -17,14 +19,16 @@ Page({
     },
     hotMaps: []
   },
-  onLoad() {
+  async onLoad() {
     let sliderWidth = 36;
     const tabsLength = this.data.tabs.length;
     const tabPadding = this.data.tabPadding;
     const windowWidth = app.globalData.windowWidth;
     const statusBarHeight = app.globalData.statusBarHeight;
+    const isUserInfo = getIsUserInfo();
 
     this.setData({
+      isUserInfo,
       windowWidth,
       statusBarHeight,
       sliderLeft: (windowWidth / tabsLength - sliderWidth) / 2 + tabPadding / 2,
@@ -61,6 +65,14 @@ Page({
     let { current, pageSize } = this.data.listQuery;
     current++;
     this.getHotList({ current, pageSize });
+  },
+  onGotUserInfo(e) {
+    const userInfo = e.detail.userInfo;
+    saveIsUserInfo(!!userInfo);
+
+    this.setData({
+      isUserInfo: !!userInfo
+    });
   },
   async getHotList(listQuery) {
     const { hotMaps } = this.data;

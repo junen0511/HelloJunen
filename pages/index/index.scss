@@ -99,6 +99,16 @@
       }
     }
   }
+  .authorize-card {
+    padding: 40rpx;
+    text-align: center;
+    text {
+      display: block;
+      line-height: 90rpx;
+      font-size: 28rpx;
+      font-weight: bold;
+    }
+  }
   .custom-box {
     width: auto;
     margin: 24rpx;
