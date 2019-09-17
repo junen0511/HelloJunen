@@ -1,14 +1,19 @@
 const app = getApp();
-import { getIsUserInfo, saveIsUserInfo } from "../../global/user";
+import { saveUser } from "../../global/user";
 import { fetchHotList } from "./service";
+import {
+  getOpenid,
+  getScopeUserInfo,
+  setScopeUserInfo
+} from "../../utils/util";
 
 Page({
   data: {
-    isUserInfo: null,
-    tabs: ["热榜", "为你推荐"],
-    activeIndex: 0,
+    scopeUserInfo: false,
     windowWidth: 0,
     statusBarHeight: 0,
+    tabs: ["热榜", "为你推荐"],
+    activeIndex: 0,
     tabPadding: 85,
     sliderOffset: 0,
     sliderLeft: 0,
@@ -23,12 +28,11 @@ Page({
     let sliderWidth = 36;
     const tabsLength = this.data.tabs.length;
     const tabPadding = this.data.tabPadding;
-    const windowWidth = app.globalData.windowWidth;
-    const statusBarHeight = app.globalData.statusBarHeight;
-    const isUserInfo = getIsUserInfo();
+    const { windowWidth, statusBarHeight } = app.globalData;
+    const scopeUserInfo = getScopeUserInfo();
 
     this.setData({
-      isUserInfo,
+      scopeUserInfo,
       windowWidth,
       statusBarHeight,
       sliderLeft: (windowWidth / tabsLength - sliderWidth) / 2 + tabPadding / 2,
@@ -68,10 +72,12 @@ Page({
   },
   onGotUserInfo(e) {
     const userInfo = e.detail.userInfo;
-    saveIsUserInfo(!!userInfo);
+    const openid = getOpenid();
+    saveUser({ openid, ...userInfo });
+    setScopeUserInfo(!!userInfo);
 
     this.setData({
-      isUserInfo: !!userInfo
+      scopeUserInfo: !!userInfo
     });
   },
   async getHotList(listQuery) {

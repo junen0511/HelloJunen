@@ -32,7 +32,7 @@
         </swiper-item>
         <swiper-item>
             <scroll-view class="custom-scroll__view" scroll-y="{{true}}">
-                <view class="authorize-card" wx:if="{{!isUserInfo}}">
+                <view class="authorize-card" wx:if="{{!scopeUserInfo}}">
                     <text>授权后，获取个性化内容推荐</text>
                     <button type="primary" size="mini" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
                         点击授权
