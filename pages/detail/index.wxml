@@ -4,7 +4,7 @@
         <view class="topic-title">
             <text>{{hotInfo.hotTitle}}</text>
         </view>
-        <view class="topic-desc" style="max-height: {{topicDescUnfold?'84rpx':'auto'}};">
+        <view class="topic-desc" style="max-height: {{!topicDescUnfold?'84rpx':'auto'}};">
             <label>相关问题：</label>
             <text>{{hotInfo.hotExcerpt}}</text>
         </view>
